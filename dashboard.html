@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="showLoginUser()">
+    <div class="container">
+        <div>
+            Welcome <span id="user"></span>
+        </div>
+        <div>
+            <button onclick="logout()">log out</button>
+        </div>
+    </div>
+    <script>
+        
+        const showLoginUser=()=>{
+            let loginUser=JSON.parse( localStorage.getItem("user"));
+            if(loginUser){
+
+                console.log(loginUser);
+                document.getElementById("user").innerText=loginUser.firstname
+            }else{
+                location.href="index.html"
+            }
+        }
+        const logout=()=>{
+            
+            localStorage.removeItem("user");
+            location.href="index.html"
+        }
+    </script>
+</body>
+</html>

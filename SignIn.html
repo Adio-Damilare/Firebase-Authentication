@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container ">
+        <div class="r">
+            <div class="row pt-5 ">
+                <div class="py-5 ">
+                    <div class="col-lg-8 row col-sm-12 col-md-9 h-100 mx-lg-auto border ">
+                        <div id="message" class="col-12 text-center text-light"></div>
+                        <div class="col-6 ">
+                            <div class="pt-  ">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control mb-4" id="eM" placeholder="example@gmail.com">
+                                <label for="">Password</label>
+                                <input type="text" class="form-control mb-4" id="editPlaceholder"
+                                    placeholder="**************">
+                                <div>
+                                    <button class="btn btn-success w-100" id="signIn">
+                                        Signin
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 bg-success  h-100">
+                            <div class="text-center">
+                                <h1>Signin</h1>
+                            </div>
+                            <p class="text-light text-center pt-5 fs-3"> welcome back !!!!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+        import { getAuth,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+        // import { getAuth,createUser } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD5nsSBiDDk6acp97JTt0utha-RxEz9260",
+            authDomain: "assignment-5c26f.firebaseapp.com",
+            projectId: "assignment-5c26f",
+            storageBucket: "assignment-5c26f.appspot.com",
+            messagingSenderId: "597052426105",
+            appId: "1:597052426105:web:75457fa572cbb505a311a8"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        document.getElementById("signIn").addEventListener("click", () => {
+            let password=editPlaceholder.value;
+            let email=eM.value;
+            signInWithEmailAndPassword(auth,email,password).then((userLogin)=>{
+                console.log(userLogin)
+                console.log(userLogin.user.displayName.firstname)
+            }).catch((error)=>{
+                console.log(error)
+            })
+        })
+    </script>
+</body>
+
+</html>
